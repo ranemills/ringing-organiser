@@ -1,0 +1,6 @@
+com/mills/organiser/controllers/OrganisationController.class
+com/mills/organiser/models/Event.class
+com/mills/organiser/models/Organisation.class
+com/mills/organiser/RingingOrganiserApplication.class
+com/mills/organiser/repositories/OrganisationRepository.class
+com/mills/organiser/enums/RelationshipType.class
