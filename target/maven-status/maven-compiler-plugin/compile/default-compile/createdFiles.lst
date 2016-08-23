@@ -1,6 +1,13 @@
 com/mills/organiser/controllers/OrganisationController.class
-com/mills/organiser/models/Event.class
-com/mills/organiser/models/Organisation.class
 com/mills/organiser/RingingOrganiserApplication.class
+com/mills/organiser/models/relations/Invitation.class
+com/mills/organiser/controllers/GenerateDataController.class
+com/mills/organiser/models/nodes/Organisation.class
+com/mills/organiser/models/nodes/Person.class
+com/mills/organiser/repositories/InvitationRepository.class
+com/mills/organiser/repositories/PersonRepository.class
+com/mills/organiser/repositories/EventRepository.class
+com/mills/organiser/models/nodes/Event.class
+com/mills/organiser/models/Neo4JModel.class
 com/mills/organiser/repositories/OrganisationRepository.class
 com/mills/organiser/enums/RelationshipType.class

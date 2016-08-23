@@ -1,5 +1,6 @@
 package com.mills.organiser;
 
+import org.joda.time.DateTime;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableNeo4jRepositories
-@EnableWebMvc
 public class RingingOrganiserApplication extends Neo4jConfiguration {
 
     public static void main(String[] args) {
@@ -22,7 +22,8 @@ public class RingingOrganiserApplication extends Neo4jConfiguration {
     public Configuration getConfiguration() {
         Configuration config = new Configuration();
         config.driverConfiguration()
-                .setDriverClassName("org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver");
+              .setDriverClassName("org.neo4j.ogm.drivers.http.driver.HttpDriver")
+              .setURI("http://neo4j:password@localhost:7474");
         return config;
     }
 
