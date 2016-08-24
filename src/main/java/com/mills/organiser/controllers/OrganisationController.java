@@ -15,7 +15,8 @@ import java.util.List;
 /**
  * Created by ryanmills on 23/08/2016.
  */
-@RestController("/organisations")
+@RestController
+@RequestMapping("/organisations")
 public class OrganisationController {
 
     @Autowired
