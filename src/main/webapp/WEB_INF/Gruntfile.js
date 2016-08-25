@@ -165,7 +165,12 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git{,*/}*'
           ]
-        }]
+        }],
+        options: {
+          force: {
+            force: true
+          }
+        }
       },
       server: '.tmp'
     },
@@ -371,7 +376,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'staticApp',
+          module: 'organiserApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name organiserApp.controller:MainCtrl
+ * @name organiserApp.controller:AccountCtrl
  * @description
- * # MainCtrl
+ * # AccountCtrl
  * Controller of the organiserApp
  */
 angular.module('organiserApp')
-  .controller('MainCtrl', function () {
+  .controller('AccountCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
