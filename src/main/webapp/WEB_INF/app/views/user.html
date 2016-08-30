@@ -1,0 +1,36 @@
+<h2>My Invitations</h2>
+
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th>My response</th>
+  </tr>
+  <tr ng-repeat="event in UserCtrl.events">
+    <td>{{event.date}}</td>
+    <td>{{event.name}}</td>
+    <td>{{event.location}}</td>
+    <td>
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="form-check-inline">
+            <input type="radio" name="response" value="yes" id="yes" class="form-check-input">
+            Yes
+          </label>
+          <label class="form-check-inline">
+            <input type="radio" name="response" value="maybe" id="maybe" class="form-check-input">
+            Maybe
+          </label>
+          <label class="form-check-inline">
+            <input type="radio" name="response" value="no" id="no" class="form-check-input">
+            No
+          </label>
+        </div>
+      </form>
+    </td>
+    <td>
+      <button type="button" class="btn btn-outline-primary">View Emails</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,26 @@
+<h2>Upcoming Events</h2>
+
+<table class="table">
+  <tr>
+    <th class="col-sm-1"></th>
+    <th class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">
+      {{event.name}}
+    </th>
+  </tr>
+  <tr class="bg-success">
+    <td class="col-sm-1">Yes</td>
+    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.yes}}</td>
+  </tr>
+  <tr class="bg-warning">
+    <td class="col-sm-1">Maybe</td>
+    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.maybe}}</td>
+  </tr>
+  <tr class="bg-danger">
+    <td class="col-sm-1">No</td>
+    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.no}}</td>
+  </tr>
+  <tr>
+    <td class="col-sm-1">Required</td>
+    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.required}}</td>
+  </tr>
+</table>
