@@ -34,33 +34,25 @@ public class GenerateDataController {
     @RequestMapping(method = RequestMethod.PUT)
     public void createData() {
         Organisation organisation = new Organisation("test");
-//        _organisationRepository.save(organisation);
 
         List<Person> people = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Person person = new Person("testPerson" + i);
             organisation.addPerson(person);
             people.add(person);
-//            _personRepository.save(person);
-//            _organisationRepository.save(organisation);
         }
         List<Event> events = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             Event event = new Event("testEvent" + i);
             organisation.addEvent(event);
-//            _organisationRepository.save(organisation);
             events.add(event);
             for (int j = 0; j < 5; j++) {
-                int index = RandomUtils.nextInt(0, 4);
+                int index = RandomUtils.nextInt(0, 9);
                 Invitation invitation = new Invitation(event, people.get(index));
-//                _invitationRepository.save(invitation);
                 event.addInvitiation(invitation);
-//                _eventRepository.save(event);
             }
         }
         _organisationRepository.save(organisation);
-
-
     }
 
 }
