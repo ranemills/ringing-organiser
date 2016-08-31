@@ -33,7 +33,6 @@ public class OrganisationController {
     @Autowired
     OrganisationRepository _organisationRepository;
 
-    @ApiMethod
     @RequestMapping
     public List<Organisation> getOrganisations() {
         List<Organisation> organisations = new ArrayList<>();
