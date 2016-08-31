@@ -21,7 +21,8 @@ public class Person extends Neo4JModel {
     @Relationship(type = "INVITED", direction = Relationship.UNDIRECTED)
     private List<Invitation> _invitations;
 
-    private Person() {}
+    private Person() {
+    }
 
     public Person(String name) {
         _invitations = new ArrayList<>();

@@ -1,6 +1,6 @@
 package com.mills.organiser;
 
-import org.joda.time.DateTime;
+import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +11,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
 @SpringBootApplication
 @EnableNeo4jRepositories
+@EnableJSONDoc
 public class RingingOrganiserApplication extends Neo4jConfiguration {
 
     public static void main(String[] args) {

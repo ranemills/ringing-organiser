@@ -23,13 +23,7 @@ import java.util.List;
 public class GenerateDataController {
 
     @Autowired
-    private GraphRepository<Person> _personRepository;
-    @Autowired
-    private GraphRepository<Event> _eventRepository;
-    @Autowired
     private GraphRepository<Organisation> _organisationRepository;
-    @Autowired
-    private InvitationRepository _invitationRepository;
 
     @RequestMapping(method = RequestMethod.PUT)
     public void createData() {
