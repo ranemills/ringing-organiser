@@ -22,8 +22,7 @@ public class RingingOrganiserApplication extends Neo4jConfiguration {
     public Configuration getConfiguration() {
         Configuration config = new Configuration();
         config.driverConfiguration()
-              .setDriverClassName("org.neo4j.ogm.drivers.http.driver.HttpDriver")
-              .setURI("http://neo4j:password@localhost:7474");
+                .setDriverClassName("org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver");
         return config;
     }
 

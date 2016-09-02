@@ -1,7 +1,7 @@
 package com.mills.organiser.controllers;
 
-import com.mills.organiser.models.nodes.Organisation;
-import com.mills.organiser.repositories.OrganisationRepository;
+import com.mills.organiser.models.nodes.Person;
+import com.mills.organiser.repositories.PersonRepository;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
 import org.jsondoc.core.annotation.ApiVersion;
@@ -17,25 +17,26 @@ import java.util.List;
 /**
  * Created by ryanmills on 23/08/2016.
  */
-@Api(name = "organisations",
+@Api(name = "people",
         visibility = ApiVisibility.PUBLIC,
         stage = ApiStage.GA,
-        description = "Methods for viewing and manipulating organisations")
+        description = "Methods for viewing and manipulating people")
 @ApiVersion(since = "1.0")
 @ApiAuthNone
 @RestController
-@RequestMapping("/organisations")
-public class OrganisationController {
+@RequestMapping("/people")
+public class PersonController {
 
     @Autowired
-    OrganisationRepository _organisationRepository;
+    PersonRepository _personRepository;
 
     @RequestMapping
-    public List<Organisation> getOrganisations() {
-        List<Organisation> organisations = new ArrayList<>();
-        for (Organisation organisation : _organisationRepository.findAll(0)) {
-            organisations.add(organisation);
+    public List<Person> getPersons() {
+        List<Person> people = new ArrayList<>();
+        for (Person person : _personRepository.findAll(0)) {
+            people.add(person);
         }
-        return organisations;
+        return people;
     }
+
 }

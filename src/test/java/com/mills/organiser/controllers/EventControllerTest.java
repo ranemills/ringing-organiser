@@ -1,31 +1,31 @@
 package com.mills.organiser.controllers;
 
+import com.mills.organiser.models.nodes.Event;
 import com.mills.organiser.models.nodes.Organisation;
-import com.mills.organiser.repositories.OrganisationRepository;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by ryan on 31/08/16.
  */
-public class OrganisationControllerTest extends IntegrationTest {
+public class EventControllerTest extends IntegrationTest {
+
 
     @Test
     public void shouldReturnEmptyList()
             throws Exception {
-        mockMvc.perform(get("/organisations").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/events").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
     }
@@ -33,11 +33,23 @@ public class OrganisationControllerTest extends IntegrationTest {
     @Test
     public void shouldReturnOrganisations()
             throws Exception {
-        _organisationRepository.save(new Organisation("testName"));
-
-        mockMvc.perform(get("/organisations").accept(MediaType.APPLICATION_JSON))
+        _eventRepository.save(new Event("testName"));
+        mockMvc.perform(get("/events").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("testName")));
     }
+
+    @Test
+    public void shouldCreateEventForOrganisation()
+            throws Exception {
+        mockMvc.perform(post("/events").contentType(contentType).content(json(new Event("testEvent"))))
+                .andExpect(status().isOk());
+
+        List<Event> events = listFromIterable(_eventRepository.findAll());
+        assertThat(events, hasSize(1));
+        assertThat(events.get(0).getName(), is("testEvent"));
+
+    }
+
 }
