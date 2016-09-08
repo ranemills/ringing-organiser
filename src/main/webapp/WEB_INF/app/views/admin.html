@@ -1,26 +1,46 @@
-<h2>Upcoming Events</h2>
+<div class="row">
+  <h2>Upcoming Events</h2>
 
-<table class="table">
-  <tr>
-    <th class="col-sm-1"></th>
-    <th class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">
-      {{event.name}}
-    </th>
-  </tr>
-  <tr class="bg-success">
-    <td class="col-sm-1">Yes</td>
-    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.yes}}</td>
-  </tr>
-  <tr class="bg-warning">
-    <td class="col-sm-1">Maybe</td>
-    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.maybe}}</td>
-  </tr>
-  <tr class="bg-danger">
-    <td class="col-sm-1">No</td>
-    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.no}}</td>
-  </tr>
-  <tr>
-    <td class="col-sm-1">Required</td>
-    <td class="col-sm-1 text-xs-center" ng-repeat="event in AdminCtrl.events">{{event.required}}</td>
-  </tr>
-</table>
+  <span class="form-group">
+    <select class="custom-select">
+      <option selected>Filter by location</option>
+      <option ng-repeat="location in AdminCtrl.eventLocations" value="{{location}}">{{location}}</option>
+    </select>
+    <select class="custom-select">
+      <option selected>Filter by date</option>
+      <option ng-repeat="date in AdminCtrl.eventDates" value="{{date}}">{{date}}</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="row">
+
+<div class="card-columns">
+  <div class="card text-xs-center" ng-repeat="event in AdminCtrl.events">
+    <div class="card-header">
+      <h3>{{event.date}}</h3>
+      <h4>{{event.type}} at {{event.location}}</h4>
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <span ng-if="!!event.description">
+          {{event.description}}
+        <hr>
+        </span>
+      </div>
+    <div class="row">
+      <div class="col-xs-4 font-weight-bold">Yes</div>
+      <div class="col-xs-2">{{event.yes}}</div>
+      <div class="col-xs-4 font-weight-bold">No</div>
+      <div class="col-xs-2">{{event.no}}</div>
+      <div class="col-xs-4 font-weight-bold">Maybe</div>
+      <div class="col-xs-2">{{event.maybe}}</div>
+      <div class="col-xs-4 font-weight-bold">No response</div>
+      <div class="col-xs-2">{{event.pending}}</div>
+    </div>
+    </div>
+  </div>
+
+</div>
+</div>

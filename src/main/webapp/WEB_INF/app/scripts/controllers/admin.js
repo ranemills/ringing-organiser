@@ -8,36 +8,21 @@
  * Controller of the organiserApp
  */
 angular.module('organiserApp')
-  .controller('AdminCtrl', function () {
+  .controller('AdminCtrl', function (MockEvents) {
     var AdminCtrl = this;
-    this.events = [
-      {
-        name: 'Event 1',
-        yes: 5,
-        maybe: 6,
-        no: 5,
-        required: 12
-      },
-      {
-        name: 'Event 2',
-        yes: 10,
-        maybe: 3,
-        no: 1,
-        required: 12
-      },
-      {
-        name: 'Event 3',
-        yes: 12,
-        maybe: 1,
-        no: 2,
-        required: 12
-      },
-      {
-        name: 'Event 4',
-        yes: 1,
-        maybe: 2,
-        no: 6,
-        required: 8
-      }
+    this.events = MockEvents;
+
+    this.eventDates = [
+      "2016-09-11",
+      "2016-09-12",
+      "2016-09-13",
+      "2016-09-14"
     ];
+
+    this.eventLocations  = [
+      "Magdalen",
+      "Christ Church",
+      "Merton"
+    ];
+
   });
