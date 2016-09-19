@@ -2,6 +2,7 @@ package com.mills.organiser.controllers;
 
 import com.mills.organiser.models.nodes.Event;
 import com.mills.organiser.models.nodes.Organisation;
+import com.mills.organiser.models.nodes.Person;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -31,13 +34,13 @@ public class EventControllerTest extends IntegrationTest {
     }
 
     @Test
-    public void shouldReturnOrganisations()
+    public void shouldReturnEvents()
             throws Exception {
-        _eventRepository.save(new Event("testName"));
+        _eventRepository.save(new Event("testEvent"));
         mockMvc.perform(get("/events").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is("testName")));
+                .andExpect(jsonPath("$[0].name", is("testEvent")));
     }
 
     @Test
@@ -49,7 +52,28 @@ public class EventControllerTest extends IntegrationTest {
         List<Event> events = listFromIterable(_eventRepository.findAll());
         assertThat(events, hasSize(1));
         assertThat(events.get(0).getName(), is("testEvent"));
+    }
 
+    @Test
+    public void canRetrieveEventDetails()
+        throws Exception {
+        Event event = _eventRepository.save(new Event("testEvent"));
+        mockMvc.perform(get("/events/" + event.getId()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", not(nullValue())))
+                .andExpect(jsonPath("$['name']", is("testEvent")));
+    }
+
+    @Test
+    public void shouldInvitePerson()
+        throws Exception {
+        Event event = _eventRepository.save(new Event("testEvent"));
+        Person person = _personRepository.save(new Person("testPerson"));
+        mockMvc.perform(post("/events/"+event.getId()+"/invitations/"+person.getId()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", not(nullValue())))
+                .andExpect(jsonPath("$.event.name", is("testEvent")))
+                .andExpect(jsonPath("$.person.name", is("testPerson")));
     }
 
 }

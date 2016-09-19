@@ -1,5 +1,9 @@
 package com.mills.organiser.models.nodes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mills.organiser.models.Neo4JModel;
 import com.mills.organiser.models.relations.Invitation;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -18,6 +22,7 @@ public class Event extends Neo4JModel {
     @Property
     private String _name;
 
+    @JsonManagedReference
     @Relationship(type = "INVITED", direction = Relationship.UNDIRECTED)
     private List<Invitation> _invitations;
 

@@ -1,5 +1,6 @@
 package com.mills.organiser.models.nodes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.mills.organiser.models.Neo4JModel;
 import com.mills.organiser.models.relations.Invitation;
 import org.neo4j.ogm.annotation.NodeEntity;

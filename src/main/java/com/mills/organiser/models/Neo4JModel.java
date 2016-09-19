@@ -1,10 +1,15 @@
 package com.mills.organiser.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.neo4j.ogm.annotation.GraphId;
 
 /**
  * Created by ryan on 23/08/16.
  */
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public abstract class Neo4JModel {
     @GraphId
     private Long _id;

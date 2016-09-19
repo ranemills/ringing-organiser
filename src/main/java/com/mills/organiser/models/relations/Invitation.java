@@ -1,5 +1,9 @@
 package com.mills.organiser.models.relations;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mills.organiser.models.Neo4JModel;
 import com.mills.organiser.models.nodes.Event;
 import com.mills.organiser.models.nodes.Person;
