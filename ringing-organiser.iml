@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/resources/static" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB_INF/bower_components" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB_INF/node" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB_INF/node_modules" />
@@ -125,6 +126,7 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.voodoodyne.jackson.jsog:jackson-jsog:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.jsondoc:jsondoc-ui-webjar:1.2.16" level="project" />
   </component>
 </module>
