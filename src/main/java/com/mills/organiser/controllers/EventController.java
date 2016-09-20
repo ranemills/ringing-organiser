@@ -1,5 +1,7 @@
 package com.mills.organiser.controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.mills.organiser.View;
 import com.mills.organiser.models.nodes.Event;
 import com.mills.organiser.models.nodes.Person;
 import com.mills.organiser.models.relations.Invitation;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by ryanmills on 23/08/2016.
@@ -38,6 +39,7 @@ public class EventController {
     @Autowired
     InvitationRepository _invitationRepository;
 
+    @JsonView(View.Common.class)
     @RequestMapping
     public List<Event> getEvents() {
         List<Event> events = new ArrayList<>();
@@ -47,21 +49,25 @@ public class EventController {
         return events;
     }
 
+    @JsonView(View.Common.class)
     @RequestMapping(method = RequestMethod.POST)
-    public void createEvent(@RequestBody Event event) {
-        _eventRepository.save(event);
+    public Event createEvent(@RequestBody Event event) {
+        return _eventRepository.save(event);
     }
 
+    @JsonView(View.WithInvitationList.class)
     @RequestMapping("/{eventId}")
     public Event getEvent(@PathVariable Long eventId) {
         return _eventRepository.findOne(eventId);
     }
 
+    @JsonView(View.Common.class)
     @RequestMapping("/{eventId}/invitations")
     public List<Invitation> getInvitations(@PathVariable Long eventId) {
         return _eventRepository.findOne(eventId).getInvitations();
     }
 
+    @JsonView(View.Common.class)
     @RequestMapping(value = "/{eventId}/invitations/{personId}", method= RequestMethod.POST)
     public Invitation invitePerson(@PathVariable("eventId") Long eventId, @PathVariable("personId") Long personId) {
         Event event = _eventRepository.findOne(eventId);

@@ -1,5 +1,7 @@
 package com.mills.organiser.models.nodes;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.mills.organiser.View;
 import com.mills.organiser.models.Neo4JModel;
 import com.mills.organiser.models.relations.Invitation;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -29,6 +31,7 @@ public class Event extends Neo4JModel {
         this._name = name;
     }
 
+    @JsonView(View.WithInvitationList.class)
     public List<Invitation> getInvitations() {
         return _invitations;
     }
@@ -37,6 +40,7 @@ public class Event extends Neo4JModel {
         this._invitations = _invitations;
     }
 
+    @JsonView(View.Common.class)
     public String getName() {
         return _name;
     }

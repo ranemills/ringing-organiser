@@ -1,6 +1,8 @@
 package com.mills.organiser.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.mills.organiser.View;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.GraphId;
 
@@ -12,6 +14,7 @@ public abstract class Neo4JModel {
     @GraphId
     private Long _id;
 
+    @JsonView(View.Common.class)
     public Long getId() {
         return _id;
     }

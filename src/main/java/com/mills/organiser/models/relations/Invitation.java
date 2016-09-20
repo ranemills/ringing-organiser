@@ -1,5 +1,7 @@
 package com.mills.organiser.models.relations;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.mills.organiser.View;
 import com.mills.organiser.models.Neo4JModel;
 import com.mills.organiser.models.nodes.Event;
 import com.mills.organiser.models.nodes.Person;
@@ -32,6 +34,7 @@ public class Invitation extends Neo4JModel {
         _createdAt = DateTime.now().toDate();
     }
 
+    @JsonView(View.Common.class)
     public Person getPerson() {
         return _person;
     }
@@ -40,6 +43,7 @@ public class Invitation extends Neo4JModel {
         this._person = _person;
     }
 
+    @JsonView(View.Common.class)
     public Date getCreatedAt() {
         return _createdAt;
     }
@@ -48,6 +52,7 @@ public class Invitation extends Neo4JModel {
         this._createdAt = _createdAt;
     }
 
+    @JsonView(View.Common.class)
     public Event getEvent() {
         return _event;
     }
